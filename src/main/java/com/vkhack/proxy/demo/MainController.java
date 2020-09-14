@@ -18,6 +18,11 @@ public class MainController {
         this.restTemplate = restTemplateBuilder.build();
     }
 
+    @GetMapping
+    public String getIndex() {
+        return "index";
+    }
+
     @GetMapping("/proxy")
     @ResponseBody
     public MultipartFile sendRequestForGetImage() {
