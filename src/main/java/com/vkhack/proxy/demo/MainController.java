@@ -26,13 +26,9 @@ public class MainController {
     @GetMapping("/proxy")
     @ResponseBody
     public Object sendRequestForGetImage() {
-        CloseableHttpClient httpClient = HttpClients.custom()
-                    .setSSLHostnameVerifier(new NoopHostnameVerifier())
-                    .build();
-HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-requestFactory.setHttpClient(httpClient);
-RestTemplate restTemplate = new RestTemplate(requestFactory);
-        String url = "https://service.pavel.im/image";
+    
+RestTemplate restTemplate = new RestTemplate();
+        String url = "http://service.pavel.im/image";
 Object response = restTemplate.getForObject(url, Object.class);
         
         ResponseEntity<Object> response = this.restTemplate.getForEntity(url, Object.class);
