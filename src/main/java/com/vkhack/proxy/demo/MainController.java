@@ -25,9 +25,9 @@ public class MainController {
 
     @GetMapping("/proxy")
     @ResponseBody
-    public MultipartFile sendRequestForGetImage() {
+    public Object sendRequestForGetImage() {
         String url = "https://service.pavel.im/image";
-        ResponseEntity<MultipartFile> response = this.restTemplate.getForEntity(url, MultipartFile.class);
+        ResponseEntity<Object> response = this.restTemplate.getForEntity(url, Object.class);
         if (response.getStatusCode() == HttpStatus.OK) {
             return response.getBody();
         } else {
